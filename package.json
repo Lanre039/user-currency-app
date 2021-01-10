@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "client": "cd client && yarn start",
-    "server": "cd server && nodemon app.js",
+    "server": "nodemon server.js",
     "build": "cd client && npm run build",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "start": "cd server && node app.js",
-    "heroku-postbuild": "cd server && npm install && npm install && cd ../client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "repository": {
     "type": "git",
