@@ -1,9 +1,6 @@
 import React from "react";
-// import Pagination from "../components/Pagination";
-
-function CardHeader({ total, activePage, handlePagination, handleSearch }) {
+function CardHeader({ total, activePage, handleSearch }) {
   return (
-    // <div className="d-lg-flex justify-content-start align-items-center flex-lg-row flex-sm-column mb-3 w-100">
     <div className="d-lg-flex d-md-flex justify-content-between align-items-center">
       <div className="mr-5">
         <header className="header">All User Profile</header>
@@ -14,10 +11,7 @@ function CardHeader({ total, activePage, handlePagination, handleSearch }) {
           </span>
         </h6>
       </div>
-      {/* <div className="mr-5"></div> */}
       <div className="md-width">
-        {/* <div className="d-flex justify-content-between align-items-start"> */}
-        {/* <div className=""> */}
         <div className="w-100">
           <div className="bg-white border rounded shadow p-1 pr-3 pl-3">
             <form
@@ -34,7 +28,6 @@ function CardHeader({ total, activePage, handlePagination, handleSearch }) {
               <i className="fas fa-search" aria-hidden="true"></i>
             </form>
           </div>
-          {/* </div> */}
         </div>
       </div>
     </div>

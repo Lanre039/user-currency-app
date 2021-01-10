@@ -21,13 +21,7 @@ function UserPage() {
             const { records } = data;
             setNoOfProfiles(records.profiles.length);
             setFetchedData(records.profiles);
-            const formatData = renderProfile(
-              records.profiles,
-              null,
-              null,
-              null,
-              currentPage
-            );
+            const formatData = renderProfile(records.profiles, currentPage);
             setProfiles(formatData);
             setLoading(false);
           }
@@ -44,10 +38,10 @@ function UserPage() {
 
   const renderProfile = (
     data,
+    pageNumber = null,
     category = "",
     filterOption = "",
-    searchInput = "",
-    pageNumber = null
+    searchInput = ""
   ) => {
     if (!searchInput || searchInput.trim().length === 0) {
       searchInput = false;
@@ -105,10 +99,10 @@ function UserPage() {
   const handleFilters = (category, filterOption) => {
     const data = renderProfile(
       fetchedData,
+      currentPage,
       category,
       filterOption,
-      null,
-      currentPage
+      null
     );
     setProfiles(data);
   };
@@ -116,10 +110,10 @@ function UserPage() {
   const handleSearch = (value) => {
     const data = renderProfile(
       fetchedData,
+      currentPage,
       "searchByName",
       "",
-      value.trim().toLowerCase(),
-      currentPage
+      value.trim().toLowerCase()
     );
     setProfiles(data);
   };
@@ -127,7 +121,7 @@ function UserPage() {
   const handlePagination = (pageNumber) => {
     if (pageNumber < 1) return;
 
-    const data = renderProfile(fetchedData, null, null, null, pageNumber);
+    const data = renderProfile(fetchedData, pageNumber);
     setProfiles(data);
     setCurrentPage(pageNumber);
   };
@@ -149,13 +143,11 @@ function UserPage() {
               <CardHeader
                 total={noOfProfiles}
                 activePage={currentPage}
-                handlePagination={handlePagination}
                 handleSearch={handleSearch}
               />
             </div>
           ) : null}
           {profiles && profiles.length > 0 ? (
-            // <div className="d-flex flex-sm-row w-100">
             <div className="d-lg-flex justify-content-between flex-lg-row flex-sm-row">
               <div className="mr-2">
                 <SideFilters handleFilters={handleFilters} />
@@ -168,12 +160,8 @@ function UserPage() {
             </div>
           )}
         </div>
-        {/* <div className="margin">
-          <SideFilters handleFilters={handleFilters} />
-        </div> */}
         <div className="">
           <br />
-          {/* <hr /> */}
           <Pagination
             total={noOfProfiles}
             currentPage={currentPage}

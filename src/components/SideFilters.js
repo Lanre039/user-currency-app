@@ -42,7 +42,6 @@ function SideFilters({ handleFilters }) {
 
         {/* PAYMENT METHOD */}
         <div>
-          {/* <hr /> */}
           <p className="text-info">Payment Method</p>
           <div>
             <input

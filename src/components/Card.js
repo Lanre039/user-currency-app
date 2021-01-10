@@ -2,8 +2,7 @@ import React from "react";
 
 function Card({ item }) {
   return (
-    <div className="bg-white shadow rounded mb-3 fff">
-      {/* <div className="d-flex justify-content-between p-4 card-container"> */}
+    <div className="bg-white shadow rounded mb-3">
       <div className="p-4">
         <div className="w-100">
           <div className="d-lg-flex justify-content-between flex-lg-row  flex-md-row flex-sm-column">
