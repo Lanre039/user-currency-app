@@ -1,15 +1,14 @@
 const express = require("express");
-// const cors = require("cors");
 const path = require("path");
 
 const app = express();
-const port = process.env.REACT_APP_API_PORT || 5000;
+const port = 5000;
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "build")));
+  app.use(express.static(path.join(__dirname, "client/build")));
 
   app.get("*", function (req, res) {
-    res.sendFile(path.join(__dirname, "build", "index.html"));
+    res.sendFile(path.join(__dirname, "client/build", "index.html"));
   });
 }
 
