@@ -1,23 +1,32 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "engines": {
-    "node": "12.13.1",
-    "npm": "6.14.8"
-  },
+  "description": "",
+  "main": "index.js",
   "scripts": {
     "client": "cd client && yarn start",
-    "server": "nodemon server.js",
+    "server": "cd server && nodemon app.js",
     "build": "cd client && npm run build",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "start": "node server.js",
-    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "start": "cd server && node app.js",
+    "heroku-postbuild": "cd server && npm install && npm install && cd ../client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lanre039/user-currency-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lanre039/user-currency-app/issues"
+  },
+  "homepage": "https://github.com/Lanre039/user-currency-app#readme",
   "dependencies": {
     "express": "^4.16.4"
   },
   "devDependencies": {
-    "concurrently": "^4.0.1",
+    "concurrently": "^5.0.2",
     "nodemon": "^1.19.1"
   }
 }
