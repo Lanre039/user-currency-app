@@ -16,8 +16,7 @@ const ExchangeRateController = {
 
       // FORMAT DATA
       const formattedData = formatData(result.data, currency);
-
-      if (!formattedData.rates.length) {
+      if (!Object.keys(formattedData.rates).length) {
         return ApiResponse(200, res, null, "Currency NOT listed!");
       }
 

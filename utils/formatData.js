@@ -6,12 +6,15 @@ const formatData = (data, currency = null) => {
     currency = currency.split(",");
     const rates = data.rates;
     const result = {};
-    currency.forEach(
-      (field) => (result[field.toUpperCase()] = rates[field.toUpperCase()])
-    );
+
+    currency.forEach((field) => {
+      if (Object.keys(rates).includes(field.toUpperCase())) {
+        result[field.toUpperCase()] = rates[field.toUpperCase()];
+      }
+    });
 
     format["base"] = data.base;
-    format["date"] = data.date;
+    format["date"] = new Date().toLocaleDateString();
     format["rates"] = result;
     return format;
   }
