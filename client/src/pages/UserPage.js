@@ -3,7 +3,6 @@ import Card from "../components/Card";
 import CardHeader from "../components/CardHeader";
 import Pagination from "../components/Pagination";
 import SideFilters from "../components/SideFilters";
-import axios from "../utils/axiosConfig";
 
 function UserPage() {
   const [loading, setLoading] = useState(true);
@@ -15,17 +14,21 @@ function UserPage() {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const data = await axios.get(process.env.REACT_APP_API_KEY);
-        const { records } = data;
-        setNoOfProfiles(records.profiles.length);
-        setFetchedData(records.profiles);
-        const formatData = renderProfile(records.profiles, currentPage);
-        setProfiles(formatData);
-        setLoading(false);
-      } catch (error) {
-        console.log(error);
-      }
+      fetch(process.env.REACT_APP_API_KEY)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data) {
+            const { records } = data;
+            setNoOfProfiles(records.profiles.length);
+            setFetchedData(records.profiles);
+            const formatData = renderProfile(records.profiles, currentPage);
+            setProfiles(formatData);
+            setLoading(false);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     };
 
     if (!fetchedData) {
