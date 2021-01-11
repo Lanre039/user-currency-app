@@ -5,7 +5,7 @@ import "./App.css";
 function App() {
   return (
     <div className="bg-light p-5">
-      <div className="app mx-auto ">
+      <div className="w-100 mx-auto">
         <UserPage />
       </div>
     </div>

@@ -128,8 +128,8 @@ function UserPage() {
 
   if (loading) {
     return (
-      <div className="d-flex justify-content-center align-items-center">
-        <h1>Loading....</h1>
+      <div className="d-flex justify-content-center items-center">
+        <h1>Loading data....</h1>
       </div>
     );
   }
