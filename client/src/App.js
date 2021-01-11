@@ -4,8 +4,8 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="bg-light p-5">
-      <div className="w-100 mx-auto">
+    <div className="bg-light">
+      <div className="app mx-auto">
         <UserPage />
       </div>
     </div>

@@ -2,10 +2,10 @@ import React from "react";
 function CardHeader({ total, activePage, handleSearch }) {
   return (
     <div className="d-lg-flex d-md-flex justify-content-between align-items-center">
-      <div className="mr-5">
+      <div className="">
         <header className="header">All User Profile</header>
-        <h6 className="bg-primry font-weight-light text-dark-50 lead mb-2 spacing">
-          Currently showing all users - &nbsp;{" "}
+        <h6 className="bg-primry font-weight-light text-dark-50 mb-2 spacing">
+          Currently showing page - &nbsp;
           <span className="font-weight-bold">
             {activePage}/{total}
           </span>
@@ -22,7 +22,7 @@ function CardHeader({ total, activePage, handleSearch }) {
                 className="form-control-sm mr-lg-3 mr-sm-2 border-0 input-width"
                 onChange={(e) => handleSearch(e.target.value)}
                 type="text"
-                placeholder="Search by name..."
+                placeholder="Search by name (e.g jane doe)"
                 aria-label="Search"
               ></input>
               <i className="fas fa-search" aria-hidden="true"></i>

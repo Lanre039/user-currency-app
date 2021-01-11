@@ -4,8 +4,13 @@
   font-weight: bolder;
 }
 
+.user-page {
+  width: 80%;
+}
+
 .app {
   width: 90%;
+  padding: 3rem;
 }
 
 .spacing {
@@ -23,10 +28,20 @@
   margin-top: 5.6rem;
 }
 
+@media only screen and (max-width: 80rem) {
+  .user-page {
+    width: 120%;
+  }
+}
+
 @media only screen and (max-width: 757px) {
   .md-width {
     width: 60%;
     margin-bottom: 0.5rem;
+  }
+
+  .user-page {
+    width: 90%;
   }
 }
 
@@ -36,5 +51,13 @@
   }
   .header {
     font-size: 1.2rem;
+  }
+
+  .user-page {
+    width: 100%;
+  }
+
+  .app {
+    padding: 3rem 0.5rem;
   }
 }

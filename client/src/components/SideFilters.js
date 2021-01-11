@@ -42,7 +42,7 @@ function SideFilters({ handleFilters }) {
 
         {/* PAYMENT METHOD */}
         <div>
-          <p className="text-info">Payment Method</p>
+          <p className="text-info">Credit card type</p>
           <div>
             <input
               type="radio"
@@ -56,7 +56,7 @@ function SideFilters({ handleFilters }) {
           <div>
             <input
               type="radio"
-              value="master card"
+              value="mastercard"
               id="creditCardType"
               name="category"
               onClick={(e) => handleFilters(e.target.id, e.target.value)}

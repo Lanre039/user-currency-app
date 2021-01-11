@@ -11,6 +11,7 @@ function UserPage() {
   const [profiles, setProfiles] = useState([]);
   const [pageSize] = useState(20);
   const [currentPage, setCurrentPage] = useState(1);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,6 +29,7 @@ function UserPage() {
         })
         .catch((error) => {
           console.log(error);
+          setError("Failed to fetch data. Try again");
         });
     };
 
@@ -59,30 +61,36 @@ function UserPage() {
     // FILTER BY GENDER
     if (category === "gender") {
       renderData = renderData.filter(
-        ({ Gender, FirstName }) =>
+        ({ Gender, FirstName, LastName }) =>
           Gender.toLowerCase() === filterOption &&
           (searchInput
-            ? RegExp(`^${searchInput}`, "ig").test(FirstName.toLowerCase())
+            ? RegExp(`^${searchInput}`, "ig").test(
+                `${FirstName.toLowerCase()} ${LastName.toLowerCase()}`
+              )
             : true)
       );
     }
 
-    // FILTER BY PAYMENT METHOD
+    // FILTER BY CREDIT CARD TYPE
     if (category === "creditCardType") {
       renderData = renderData.filter(
-        ({ CreditCardType, FirstName }) =>
+        ({ CreditCardType, FirstName, LastName }) =>
           CreditCardType.toLowerCase() === filterOption &&
           (searchInput
-            ? RegExp(`^${searchInput}`, "ig").test(FirstName.toLowerCase())
+            ? RegExp(`^${searchInput}`, "ig").test(
+                `${FirstName.toLowerCase()} ${LastName.toLowerCase()}`
+              )
             : true)
       );
     }
 
     // SEARCH BY FIRST NAME
     if (category === "searchByName") {
-      renderData = renderData.filter(({ FirstName }) =>
+      renderData = renderData.filter(({ FirstName, LastName }) =>
         searchInput
-          ? RegExp(`^${searchInput}`, "ig").test(FirstName.toLowerCase())
+          ? RegExp(`^${searchInput}`, "ig").test(
+              `${FirstName.toLowerCase()} ${LastName.toLowerCase()}`
+            )
           : true
       );
     }
@@ -126,18 +134,18 @@ function UserPage() {
     setCurrentPage(pageNumber);
   };
 
-  if (loading) {
+  if (loading || error) {
     return (
-      <div className="d-flex justify-content-center items-center">
-        <h1>Loading data....</h1>
+      <div className="d-flex justify-content-center align-items-center">
+        {error ? <h1>{error}</h1> : <h1>Loading data....</h1>}
       </div>
     );
   }
 
   return (
     <>
-      <div className="d-flex flex-column align-items-center">
-        <div>
+      <div className="d-flex justify-content-between flex-column align-items-center">
+        <div className="user-page">
           {noOfProfiles ? (
             <div className="w-100">
               <CardHeader
@@ -152,11 +160,16 @@ function UserPage() {
               <div className="mr-2">
                 <SideFilters handleFilters={handleFilters} />
               </div>
-              <div>{profiles}</div>
+              <div className="flex-fill">{profiles}</div>
             </div>
           ) : (
-            <div className="d-flex justify-content-center align-items-center mt-5">
-              <h1>NO record available</h1>
+            <div className="d-flex justify-content-center align-items-enter mt-5">
+              <div className="mr-2">
+                <SideFilters handleFilters={handleFilters} />
+              </div>
+              <div className="flex-fill ml-5">
+                <h1>No record available</h1>
+              </div>
             </div>
           )}
         </div>

@@ -23,11 +23,11 @@ function Card({ item }) {
             </div>
             <div>
               <h6>
-                <span className="text-info">Phone Number:</span>{" "}
+                <span className="text-info">Phone number:</span>{" "}
                 {item.PhoneNumber}
               </h6>
               <h6>
-                <span className="text-info">Credit card Number:</span>{" "}
+                <span className="text-info">Credit card number:</span>{" "}
                 {item.CreditCardNumber}
               </h6>
               <h6>
