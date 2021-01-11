@@ -61,35 +61,26 @@ function UserPage() {
     // FILTER BY GENDER
     if (category === "gender") {
       renderData = renderData.filter(
-        ({ Gender, FirstName, LastName }) =>
-          Gender.toLowerCase() === filterOption &&
-          (searchInput
-            ? RegExp(`^${searchInput}`, "ig").test(
-                `${FirstName.toLowerCase()} ${LastName.toLowerCase()}`
-              )
-            : true)
+        ({ Gender }) => Gender.toLowerCase() === filterOption
       );
     }
 
     // FILTER BY PAYMENT METHOD
     if (category === "paymentMethod") {
       renderData = renderData.filter(
-        ({ PaymentMethod, FirstName, LastName }) =>
-          PaymentMethod.toLowerCase() === filterOption &&
-          (searchInput
-            ? RegExp(`^${searchInput}`, "ig").test(
-                `${FirstName.toLowerCase()} ${LastName.toLowerCase()}`
-              )
-            : true)
+        ({ PaymentMethod }) => PaymentMethod.toLowerCase() === filterOption
       );
     }
 
-    // SEARCH BY FIRST NAME
+    // SEARCH BY NAME
     if (category === "searchByName") {
       renderData = renderData.filter(({ FirstName, LastName }) =>
         searchInput
           ? RegExp(`^${searchInput}`, "ig").test(
               `${FirstName.toLowerCase()} ${LastName.toLowerCase()}`
+            ) ||
+            RegExp(`^${searchInput}`, "ig").test(
+              `${LastName.toLowerCase()} ${FirstName.toLowerCase()}`
             )
           : true
       );

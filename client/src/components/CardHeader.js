@@ -1,13 +1,16 @@
 import React from "react";
 function CardHeader({ total, activePage, handleSearch }) {
+  const end = 20 * activePage;
+  const start = activePage === 1 ? 1 : (activePage - 1) * 20 + 1;
+
   return (
     <div className="d-lg-flex d-md-flex justify-content-between align-items-center">
       <div className="">
         <header className="header">All User Profile</header>
-        <h6 className="bg-primry font-weight-light text-dark-50 mb-2 spacing">
-          Currently showing page{" "}
-          <span className="font-weight-bold">
-            {activePage} of {total} profiles
+        <h6 className="font-weight-light text-dark-50 lead mb-2 spacing">
+          Currently showing{" "}
+          <span className="font-weight-bold pb-5">
+            {start} - {total > end ? end : total} of {total} users
           </span>
         </h6>
       </div>

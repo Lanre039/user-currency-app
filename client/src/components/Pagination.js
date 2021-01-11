@@ -11,33 +11,34 @@ function Pagination({ total, profilePerPage, paginate, currentPage }) {
     <nav>
       <ul className="pagination justify-content-center mb-0">
         <li className="page-item">
-          <a
+          <button
             className="page-link pointer"
-            href="#*"
             onClick={() => paginate(currentPage - 1)}
+            disabled={currentPage === 1}
           >
             Previous
-          </a>
+          </button>
         </li>
         {pageNumbers.map((num) => (
           <li className="page-item" key={num}>
-            <a
+            <button
               onClick={() => paginate(num)}
-              href="#*"
-              className="page-link pointer"
+              className={`page-link pointer  ${
+                currentPage === num ? "btn" : ""
+              }`}
             >
               {num}
-            </a>
+            </button>
           </li>
         ))}
         <li className="page-item">
-          <a
+          <button
             className="page-link pointer"
-            href="#*"
             onClick={() => paginate(currentPage + 1)}
+            disabled={currentPage === pageNumbers.length}
           >
             Next
-          </a>
+          </button>
         </li>
       </ul>
     </nav>
