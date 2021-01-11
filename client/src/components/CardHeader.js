@@ -5,9 +5,9 @@ function CardHeader({ total, activePage, handleSearch }) {
       <div className="">
         <header className="header">All User Profile</header>
         <h6 className="bg-primry font-weight-light text-dark-50 mb-2 spacing">
-          Currently showing page - &nbsp;
+          Currently showing page{" "}
           <span className="font-weight-bold">
-            {activePage}/{total}
+            {activePage} of {total} profiles
           </span>
         </h6>
       </div>

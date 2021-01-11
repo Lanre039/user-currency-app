@@ -42,26 +42,46 @@ function SideFilters({ handleFilters }) {
 
         {/* PAYMENT METHOD */}
         <div>
-          <p className="text-info">Credit card type</p>
+          <p className="text-info">Payment method</p>
           <div>
             <input
               type="radio"
-              value="visa"
-              id="creditCardType"
+              value="check"
+              id="paymentMethod"
               name="category"
               onClick={(e) => handleFilters(e.target.id, e.target.value)}
             />
-            <label htmlFor="visa">&nbsp; VISA</label>
+            <label htmlFor="visa">&nbsp; Check</label>
           </div>
           <div>
             <input
               type="radio"
-              value="mastercard"
-              id="creditCardType"
+              value="paypal"
+              id="paymentMethod"
               name="category"
               onClick={(e) => handleFilters(e.target.id, e.target.value)}
             />
-            <label htmlFor="masterCard">&nbsp; Master Card</label>
+            <label htmlFor="visa">&nbsp; Paypal</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              value="cc"
+              id="paymentMethod"
+              name="category"
+              onClick={(e) => handleFilters(e.target.id, e.target.value)}
+            />
+            <label htmlFor="visa">&nbsp; cc</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              value="money order"
+              id="paymentMethod"
+              name="category"
+              onClick={(e) => handleFilters(e.target.id, e.target.value)}
+            />
+            <label htmlFor="masterCard">&nbsp; Money order</label>
           </div>
         </div>
       </div>

@@ -71,11 +71,11 @@ function UserPage() {
       );
     }
 
-    // FILTER BY CREDIT CARD TYPE
-    if (category === "creditCardType") {
+    // FILTER BY PAYMENT METHOD
+    if (category === "paymentMethod") {
       renderData = renderData.filter(
-        ({ CreditCardType, FirstName, LastName }) =>
-          CreditCardType.toLowerCase() === filterOption &&
+        ({ PaymentMethod, FirstName, LastName }) =>
+          PaymentMethod.toLowerCase() === filterOption &&
           (searchInput
             ? RegExp(`^${searchInput}`, "ig").test(
                 `${FirstName.toLowerCase()} ${LastName.toLowerCase()}`
