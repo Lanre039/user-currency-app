@@ -17,6 +17,10 @@ const ExchangeRateController = {
       // FORMAT DATA
       const formattedData = formatData(result.data, currency);
 
+      if (!formattedData.rates.length) {
+        return ApiResponse(200, res, null, "Currency NOT listed!");
+      }
+
       return ApiResponse(200, res, formattedData, null);
     } catch (err) {
       return ApiResponse(500, res, null, "Server Error, Try again.");
