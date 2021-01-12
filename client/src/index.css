@@ -7,6 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   font-weight: 400;
+  font-size: 1rem;
   line-height: 1.6;
   outline: none;
 }
@@ -25,7 +26,7 @@ code {
 
 html {
   box-sizing: border-box;
-  font-size: 70%;
+  /* font-size: 70%; */
   /* 10px/16px = 62.5% => 1rem = 10px */
   scroll-behavior: smooth;
 }
