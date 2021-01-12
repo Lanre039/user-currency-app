@@ -1,12 +1,12 @@
 const formatData = (data, currency = null) => {
   const format = {};
+  const invalidSearch = {};
 
   // IF CURRENCY IS PROVIDED
   if (currency) {
     currency = currency.split(",");
     const rates = data.rates;
     const result = {};
-    let invalidSearch = [];
 
     currency.forEach((field) => {
       // SELECT VALID SEARCH
@@ -17,22 +17,21 @@ const formatData = (data, currency = null) => {
       // SELECT INVALID SEARCH
       if (!Object.keys(rates).includes(field.toUpperCase())) {
         const message = `${field} NOT listed!`;
-        invalidSearch = [...invalidSearch, message];
+        invalidSearch[field] = message;
       }
     });
 
     format["base"] = data.base;
     format["date"] = new Date().toLocaleDateString();
     format["rates"] = result;
-    format["invalidSearch"] = invalidSearch;
-    return format;
+    return { format, invalidSearch };
   }
 
   format["base"] = data.base;
-  format["date"] = data.date;
+  format["date"] = new Date().toLocaleDateString();
   format["rates"] = data.rates;
-  format["invalidSearch"] = [];
-  return format;
+
+  return { format, invalidSearch };
 };
 
 module.exports = formatData;

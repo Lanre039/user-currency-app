@@ -1,4 +1,4 @@
-module.exports = (statusCode = 200, res, results, error = null) => {
-  const response = { results, error };
+module.exports = (statusCode = 200, res, results, errors = null) => {
+  const response = { results, errors };
   return res.status(statusCode).json(response);
 };
