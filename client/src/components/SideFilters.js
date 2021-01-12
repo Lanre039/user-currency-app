@@ -11,32 +11,38 @@ function SideFilters({ handleFilters }) {
             <input
               type="radio"
               value="male"
-              id="gender"
-              name="category"
-              onClick={(e) => handleFilters(e.target.id, e.target.value)}
+              id="male"
+              name="gender"
+              onClick={(e) => handleFilters(e.target.name, e.target.value)}
             />
-            <label htmlFor="male">&nbsp; Male</label>
+            <label htmlFor="male" className="pointer">
+              &nbsp; Male
+            </label>
           </div>
           <div>
             <input
               type="radio"
               value="female"
-              id="gender"
-              name="category"
-              onClick={(e) => handleFilters(e.target.id, e.target.value)}
+              id="female"
+              name="gender"
+              onClick={(e) => handleFilters(e.target.name, e.target.value)}
             />
-            <label htmlFor="female">&nbsp; Female</label>
+            <label htmlFor="female" className="pointer">
+              &nbsp; Female
+            </label>
           </div>
 
           <div>
             <input
               type="radio"
               value="prefer to skip"
-              id="gender"
-              name="category"
-              onClick={(e) => handleFilters(e.target.id, e.target.value)}
+              id="prefer to skip"
+              name="gender"
+              onClick={(e) => handleFilters(e.target.name, e.target.value)}
             />
-            <label htmlFor="skip">&nbsp; Prefer to skip</label>
+            <label htmlFor="prefer to skip" className="pointer">
+              &nbsp; Prefer to skip
+            </label>
           </div>
         </div>
 
@@ -47,41 +53,47 @@ function SideFilters({ handleFilters }) {
             <input
               type="radio"
               value="check"
-              id="paymentMethod"
-              name="category"
-              onClick={(e) => handleFilters(e.target.id, e.target.value)}
+              id="check"
+              name="paymentMethod"
+              onClick={(e) => handleFilters(e.target.name, e.target.value)}
             />
-            <label htmlFor="visa">&nbsp; Check</label>
+            <label htmlFor="check" className="pointer">
+              &nbsp; Check
+            </label>
           </div>
           <div>
             <input
               type="radio"
               value="paypal"
-              id="paymentMethod"
-              name="category"
-              onClick={(e) => handleFilters(e.target.id, e.target.value)}
+              id="paypal"
+              name="paymentMethod"
+              onClick={(e) => handleFilters(e.target.name, e.target.value)}
             />
-            <label htmlFor="visa">&nbsp; Paypal</label>
+            <label htmlFor="paypal">&nbsp; Paypal</label>
           </div>
           <div>
             <input
               type="radio"
               value="cc"
-              id="paymentMethod"
-              name="category"
-              onClick={(e) => handleFilters(e.target.id, e.target.value)}
+              id="cc"
+              name="paymentMethod"
+              onClick={(e) => handleFilters(e.target.name, e.target.value)}
             />
-            <label htmlFor="visa">&nbsp; cc</label>
+            <label htmlFor="cc" className="pointer">
+              &nbsp; cc
+            </label>
           </div>
           <div>
             <input
               type="radio"
               value="money order"
-              id="paymentMethod"
-              name="category"
-              onClick={(e) => handleFilters(e.target.id, e.target.value)}
+              id="money order"
+              name="paymentMethod"
+              onClick={(e) => handleFilters(e.target.name, e.target.value)}
             />
-            <label htmlFor="masterCard">&nbsp; Money order</label>
+            <label htmlFor="money order" className="pointer">
+              &nbsp; Money order
+            </label>
           </div>
         </div>
       </div>

@@ -12,6 +12,8 @@ function UserPage() {
   const [pageSize] = useState(20);
   const [currentPage, setCurrentPage] = useState(1);
   const [error, setError] = useState(null);
+  const [gender, setGender] = useState(null);
+  const [paymentMethod, setPaymentMethod] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,7 +38,12 @@ function UserPage() {
     if (!fetchedData) {
       fetchData();
     }
-  }, [fetchedData, currentPage]);
+
+    if (gender || paymentMethod) {
+      const data = renderProfile(fetchedData, currentPage);
+      setProfiles(data);
+    }
+  }, [fetchedData, currentPage, gender, paymentMethod]);
 
   const renderProfile = (
     data,
@@ -51,25 +58,30 @@ function UserPage() {
 
     let renderData = data;
 
-    // PAGINATION
-    if (pageNumber) {
-      const start = pageSize * (pageNumber - 1);
-      const end = start + pageSize;
-      renderData = renderData.slice(start, end);
-    }
-
     // FILTER BY GENDER
-    if (category === "gender") {
+    if (gender) {
       renderData = renderData.filter(
-        ({ Gender }) => Gender.toLowerCase() === filterOption
+        ({ Gender }) => Gender.toLowerCase() === gender
       );
+      setNoOfProfiles(renderData.length);
     }
 
     // FILTER BY PAYMENT METHOD
-    if (category === "paymentMethod") {
+    if (paymentMethod) {
       renderData = renderData.filter(
-        ({ PaymentMethod }) => PaymentMethod.toLowerCase() === filterOption
+        ({ PaymentMethod }) => PaymentMethod.toLowerCase() === paymentMethod
       );
+      setNoOfProfiles(renderData.length);
+    }
+
+    // FILTER BY GENDER AND PAYMENT METHOD
+    if (gender && paymentMethod) {
+      renderData = renderData.filter(
+        ({ PaymentMethod, Gender }) =>
+          Gender.toLowerCase() === gender &&
+          PaymentMethod.toLowerCase() === paymentMethod
+      );
+      setNoOfProfiles(renderData.length);
     }
 
     // SEARCH BY NAME
@@ -84,6 +96,20 @@ function UserPage() {
             )
           : true
       );
+      setNoOfProfiles(renderData.length);
+    }
+
+    // PAGINATION
+    if (pageNumber) {
+      console.log(pageNumber, currentPage);
+      const start = pageSize * (pageNumber - 1);
+      const end = start + pageSize;
+      renderData = renderData.slice(start, end);
+    }
+
+    const page = Math.ceil(renderData.length / 20);
+    if (page < 1) {
+      setCurrentPage(1);
     }
 
     return renderData.map((obj, index) => {
@@ -96,14 +122,13 @@ function UserPage() {
   };
 
   const handleFilters = (category, filterOption) => {
-    const data = renderProfile(
-      fetchedData,
-      currentPage,
-      category,
-      filterOption,
-      null
-    );
-    setProfiles(data);
+    if (category === "gender") {
+      setGender(filterOption);
+    }
+
+    if (category === "paymentMethod") {
+      setPaymentMethod(filterOption);
+    }
   };
 
   const handleSearch = (value) => {
@@ -118,6 +143,7 @@ function UserPage() {
   };
 
   const handlePagination = (pageNumber) => {
+    console.log("page", pageNumber);
     if (pageNumber < 1) return;
 
     const data = renderProfile(fetchedData, pageNumber);
@@ -137,15 +163,13 @@ function UserPage() {
     <>
       <div className="d-flex justify-content-between flex-column align-items-center">
         <div className="user-page">
-          {noOfProfiles ? (
-            <div className="w-100">
-              <CardHeader
-                total={noOfProfiles}
-                activePage={currentPage}
-                handleSearch={handleSearch}
-              />
-            </div>
-          ) : null}
+          <div className="w-100">
+            <CardHeader
+              total={noOfProfiles}
+              activePage={currentPage}
+              handleSearch={handleSearch}
+            />
+          </div>
           {profiles && profiles.length > 0 ? (
             <div className="d-lg-flex justify-content-between flex-lg-row flex-sm-row">
               <div className="mr-2">

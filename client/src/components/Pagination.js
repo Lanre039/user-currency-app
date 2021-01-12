@@ -35,7 +35,10 @@ function Pagination({ total, profilePerPage, paginate, currentPage }) {
           <button
             className="page-link pointer"
             onClick={() => paginate(currentPage + 1)}
-            disabled={currentPage === pageNumbers.length}
+            disabled={
+              currentPage > pageNumbers.length ||
+              currentPage === pageNumbers.length
+            }
           >
             Next
           </button>

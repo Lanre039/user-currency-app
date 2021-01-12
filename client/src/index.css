@@ -29,3 +29,15 @@ html {
   /* 10px/16px = 62.5% => 1rem = 10px */
   scroll-behavior: smooth;
 }
+
+.pointer {
+  cursor: pointer;
+}
+
+button,
+button:active,
+button:focus {
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
