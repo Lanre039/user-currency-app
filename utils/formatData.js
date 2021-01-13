@@ -1,6 +1,6 @@
 const formatData = (data, currency = null) => {
   const format = {};
-  const invalidSearch = {};
+  let invalidSearch = [];
 
   // IF CURRENCY IS PROVIDED
   if (currency) {
@@ -17,7 +17,7 @@ const formatData = (data, currency = null) => {
       // SELECT INVALID SEARCH
       if (!Object.keys(rates).includes(field.toUpperCase())) {
         const message = `${field} NOT listed!`;
-        invalidSearch[field] = message;
+        invalidSearch = [...invalidSearch, { field: message }];
       }
     });
 
