@@ -15,8 +15,8 @@ function CardHeader({ total, activePage, handleSearch }) {
   return (
     <div className="d-lg-flex d-md-flex justify-content-between align-items-center">
       <div className="">
-        <header className="header">All User Profile</header>
-        <h6 className="font-weight-light text-dark-50 lead mb-2 spacing">
+        <header className="header text-white">All User Profile</header>
+        <h6 className="font-weight-light text-dark-50 lead mb-2 spacing text-white">
           Currently showing{" "}
           <span className="font-weight-bold pb-5">{message}</span>
         </h6>

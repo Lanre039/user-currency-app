@@ -4,7 +4,7 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="bg-light">
+    <div className="bg-info">
       <div className="app mx-auto">
         <UserPage />
       </div>

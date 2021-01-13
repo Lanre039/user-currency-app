@@ -173,17 +173,17 @@ function UserPage() {
           {profiles && profiles.length > 0 ? (
             <div className="d-lg-flex justify-content-between flex-lg-row flex-sm-row">
               <div className="mr-2">
-                <SideFilters handleFilters={handleFilters} />
+                <SideFilters data={fetchedData} handleFilters={handleFilters} />
               </div>
               <div className="flex-fill">{profiles}</div>
             </div>
           ) : (
             <div className="d-flex justify-content-center align-items-enter mt-5">
               <div className="mr-2">
-                <SideFilters handleFilters={handleFilters} />
+                <SideFilters data={fetchedData} handleFilters={handleFilters} />
               </div>
               <div className="flex-fill ml-5">
-                <h1>No record available</h1>
+                <h1 className="text-white">No record available</h1>
               </div>
             </div>
           )}

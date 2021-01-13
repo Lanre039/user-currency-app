@@ -7,48 +7,48 @@ function Card({ item }) {
         <div className="w-100">
           <div className="d-lg-flex justify-content-between flex-lg-row  flex-md-row flex-sm-column">
             <div>
-              <h6>
+              <h6 className="text-capitalize">
                 <span className="text-info">Name:</span> {item.FirstName}{" "}
                 {item.LastName}
               </h6>
-              <h6>
+              <h6 className="text-capitalize">
                 <span className="text-info">Username:</span> {item.UserName}
               </h6>
-              <h6>
+              <h6 className="text-capitalize">
                 <span className="text-info">Email:</span> {item.Email}
               </h6>
-              <h6>
+              <h6 className="text-capitalize">
                 <span className="text-info">Gender:</span> {item.Gender}
               </h6>
             </div>
             <div>
-              <h6>
+              <h6 className="text-capitalize">
                 <span className="text-info">Phone number:</span>{" "}
                 {item.PhoneNumber}
               </h6>
-              <h6>
+              <h6 className="text-capitalize">
                 <span className="text-info">Credit card number:</span>{" "}
                 {item.CreditCardNumber}
               </h6>
-              <h6>
+              <h6 className="text-capitalize">
                 <span className="text-info">Credit card type:</span>{" "}
                 {item.CreditCardType}
               </h6>
-              <h6>
+              <h6 className="text-capitalize">
                 <span className="text-info">Payment method:</span>{" "}
                 {item.PaymentMethod}
               </h6>
             </div>
             <div>
-              <h6>
+              <h6 className="text-capitalize">
                 <span className="text-info">Domain name:</span>{" "}
                 {item.DomainName}
               </h6>
-              <h6>
+              <h6 className="text-capitalize">
                 <span className="text-info">Mac address:</span>{" "}
                 {item.MacAddress}
               </h6>
-              <h6>
+              <h6 className="text-capitalize">
                 <span className="text-info">URL:</span> {item.MacAddress}
               </h6>
             </div>
