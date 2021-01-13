@@ -17,7 +17,7 @@ const formatData = (data, currency = null) => {
       // SELECT INVALID SEARCH
       if (!Object.keys(rates).includes(field.toUpperCase())) {
         const message = `${field} NOT listed!`;
-        invalidSearch = [...invalidSearch, { field: message }];
+        invalidSearch = [...invalidSearch, { field, message }];
       }
     });
 
