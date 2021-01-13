@@ -38,6 +38,11 @@
   color: #fff;
 }
 
+.card-text {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
 @media only screen and (max-width: 80rem) {
   .user-page {
     width: 100%;
