@@ -4,7 +4,9 @@ function CardHeader({ total, activePage, handleSearch }) {
   const start = activePage === 1 ? 1 : (activePage - 1) * 20 + 1;
 
   const message = total
-    ? `${start} - ${total > end ? end : total} of ${total} user(s)`
+    ? `${start} - ${total > end ? end : total} of ${
+        total > 1 ? `${total} users` : `${total} user`
+      }`
     : "no record";
 
   const handleSubmit = (e) => {
