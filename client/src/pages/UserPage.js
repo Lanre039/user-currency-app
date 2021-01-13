@@ -101,7 +101,6 @@ function UserPage() {
 
     // PAGINATION
     if (pageNumber) {
-      console.log(pageNumber, currentPage);
       const start = pageSize * (pageNumber - 1);
       const end = start + pageSize;
       renderData = renderData.slice(start, end);
